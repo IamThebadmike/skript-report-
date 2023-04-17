@@ -1,0 +1,19 @@
+
+//SKRIPT FATTO DA THEBADMIKE
+command /aiuto [<text>]:
+	description: Invia un messaggio di aiuto allo staff in linea.
+	usage: /aiuto <message>
+	cooldown: 5 seconds
+	cooldown message: &b&lOceanMC &8>> &cNon Flooddare. Perfavore aspetta 5 secondi!
+	trigger:
+		if arg 1 is not set:
+			message "&7Fai &c/aiuto &7<messaggio>."
+			stop
+		message "&b&lOceanMC &8>> &c&lGrazie per aver inviato una segnalazione, è stata inoltrata ad uno staffer" 
+		if arg 1 is set:
+			loop all players:
+				if loop-player has permission "assistenza.notify":
+					message "&c&lASSISTENZA &8» &6Il giocatore &b&l&n%player%&6 ha richiesto assistenza &8» &7&n%arg%" to loop-player
+				else if loop-player has permission "assistenza.bypass":
+					cancel event
+
